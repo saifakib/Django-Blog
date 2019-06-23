@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+
+{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+{% block profile %}
+
+<div class="fh5co-bio">
+    <figure>
+        <img src="{{ author.profile_picture.url }}" alt="Free HTML5 Bootstrap Template" class="img-responsive">
+    </figure>
+    <h3 class="heading">About Me</h3>
+    <h2>{{ author.name.username }}</h2>
+    <h4>{{ author.name.email }}</h4>
+    <p>{{ author.details }}</p>
+    <ul class="fh5co-social">
+        <li><a href="#"><i class="icon-twitter"></i></a></li>
+        <li><a href="#"><i class="icon-facebook"></i></a></li>
+        <li><a href="#"><i class="icon-instagram"></i></a></li>
+    </ul>
+</div>
+
+{% endblock %}
+{% block content %}
+<div class="container">
+   <a href="{% url 'create' %}" style="float:right">Add New Article</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Title</td>
+            <td>Posted On</td>
+            <td>Configure</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.posted_on }}</td>
+                <td><a href="{% url 'delete' pid=post.id %}">Delete</a> || <a href="{% url 'update' pid=post.id %}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block script %}
+
+{% endblock %}a
